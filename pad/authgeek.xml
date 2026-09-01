@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>4.0</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>TechyGeeksHome</MASTER_PAD_EDITOR>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products.</MASTER_PAD_INFO>
+  </MASTER_PAD_VERSION_INFO>
+  <Company_Info>
+    <Company_Name>TechyGeeksHome</Company_Name>
+    <Address_1></Address_1>
+    <Address_2></Address_2>
+    <City_Town></City_Town>
+    <State_Province></State_Province>
+    <Zip_Postal_Code></Zip_Postal_Code>
+    <Country>United Kingdom</Country>
+    <Company_WebSite_URL>https://techygeekshome.info</Company_WebSite_URL>
+    <Contact_Info>
+      <Author_First_Name>Andy</Author_First_Name>
+      <Author_Last_Name>Armstrong</Author_Last_Name>
+      <Author_Email>techygeeks@outlook.com</Author_Email>
+      <Contact_First_Name>Andy</Contact_First_Name>
+      <Contact_Last_Name>Armstrong</Contact_Last_Name>
+      <Contact_Email>techygeeks@outlook.com</Contact_Email>
+    </Contact_Info>
+    <Support_Info>
+      <Sales_Email>techygeeks@outlook.com</Sales_Email>
+      <Support_Email>techygeeks@outlook.com</Support_Email>
+      <General_Email>techygeeks@outlook.com</General_Email>
+    </Support_Info>
+  </Company_Info>
+  <Program_Info>
+    <Program_Name>AuthGeek</Program_Name>
+    <Program_Version>1.0.0</Program_Version>
+    <Program_Release_Month>09</Program_Release_Month>
+    <Program_Release_Day>01</Program_Release_Day>
+    <Program_Release_Year>2026</Program_Release_Year>
+    <Program_Cost_Dollars>0</Program_Cost_Dollars>
+    <Program_Type>Freeware</Program_Type>
+    <Program_Release_Status>New Release</Program_Release_Status>
+    <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+    <Program_OS_Support>Win10,Win11,WinServer</Program_OS_Support>
+    <Program_Language>English</Program_Language>
+    <Program_Change_Info>First release.</Program_Change_Info>
+    <Program_Specific_Category>Security &amp; Privacy::Password Managers</Program_Specific_Category>
+    <Program_Category_Class>Security &amp; Privacy</Program_Category_Class>
+    <Program_System_Requirements>Windows 10 version 1809 or later, 64-bit. Nothing else to install.</Program_System_Requirements>
+    <File_Info>
+      <File_Size_Bytes>0</File_Size_Bytes>
+      <File_Size_K>0</File_Size_K>
+      <File_Size_MB>0</File_Size_MB>
+    </File_Info>
+    <Expire_Info>
+      <Has_Expire_Info>N</Has_Expire_Info>
+    </Expire_Info>
+  </Program_Info>
+  <Program_Descriptions>
+    <English>
+      <Keywords>two factor, 2FA, authenticator, TOTP, HOTP, one time password, offline, free, windows</Keywords>
+      <Char_Desc_45>Free offline two-factor authenticator</Char_Desc_45>
+      <Char_Desc_80>Your two-factor codes on your own computer, encrypted and offline</Char_Desc_80>
+      <Char_Desc_250>A two-factor authenticator for the desktop. Add an account by pasting a link, reading a QR code, or transferring the lot from Google Authenticator. It all lives in one encrypted file on your machine. No account, no server, nothing uploaded.</Char_Desc_250>
+      <Char_Desc_450>AuthGeek keeps your two-factor codes on your own computer rather than only on a phone. Add accounts by pasting an otpauth link, by reading a QR code from a picture, or by importing Google Authenticator's transfer QR in one go. Everything lives in one file encrypted with Argon2id and AES-256-GCM. Encrypted backup, plain text export and restore are built in, because a two-factor secret cannot be recovered if it is lost. Free, offline, GPL-3.0.</Char_Desc_450>
+      <Char_Desc_2000>AuthGeek keeps your two-factor codes on your own computer.
+
+Authy withdrew its desktop application, which left a lot of people with their codes on a phone and nowhere else. One lost or broken phone and every account has to be recovered one at a time through whatever proof of identity each service happens to accept, and some of them accept none.
+
+Add an account by pasting its otpauth link, by choosing a picture of its QR code, or by typing it in. Google Authenticator's Transfer accounts QR is understood too, and brings every account in it across at once. Any account can be shown back as a QR code, so getting it onto a phone is as easy as getting it in.
+
+TOTP and HOTP are both supported, with SHA1, SHA256 and SHA512, six to ten digits and any period. The codes are made to RFC 4226 and RFC 6238 and are checked on every build against the test vectors published in those documents.
+
+Everything lives in one file on this machine. The master password becomes a key with Argon2id, the accounts are encrypted with AES-256-GCM, and a fresh salt and nonce are used on every save. There is no account to create, no server to sign in to, no sync and nothing uploaded.
+
+Backup and restore were written before anything else, because a two-factor secret cannot be recovered from anywhere. There is an encrypted backup, and a plain text export that every other authenticator can read, because an application you cannot leave is worse than one you can. Restoring never replaces anything: identical accounts are skipped and same-name accounts with different secrets are kept as well as the old ones.
+
+Saving writes to a temporary file, opens it to prove it works, and keeps the previous vault as a .bak before replacing anything.
+
+Free to use, including at work. GPL-3.0. No paid tier.</Char_Desc_2000>
+    </English>
+  </Program_Descriptions>
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>https://techygeekshome.info/authgeek/</Application_Info_URL>
+      <Application_Order_URL></Application_Order_URL>
+      <Application_Screenshot_URL>https://techygeekshome.info/wp-content/uploads/2026/09/authgeek-codes.png</Application_Screenshot_URL>
+      <Application_Icon_URL>https://techygeekshome.info/wp-content/uploads/2026/09/authgeek-32.png</Application_Icon_URL>
+      <Application_XML_File_URL>https://raw.githubusercontent.com/techygeekshome/AuthGeek/main/pad/authgeek.xml</Application_XML_File_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>https://github.com/techygeekshome/AuthGeek/releases/latest/download/AuthGeekSetup.exe</Primary_Download_URL>
+      <Secondary_Download_URL>https://github.com/techygeekshome/AuthGeek/releases/latest/download/AuthGeek-portable.exe</Secondary_Download_URL>
+    </Download_URLs>
+  </Web_Info>
+</XML_DIZ_INFO>
