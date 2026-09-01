@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>authgeek</id>
+    <version>1.0.0</version>
+    <title>AuthGeek</title>
+    <authors>TechyGeeksHome</authors>
+    <owners>techygeekshome</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">GPL-3.0-or-later</license>
+    <projectUrl>https://techygeekshome.info/authgeek/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/AuthGeek@main/icons/authgeek-256.png</iconUrl>
+    <description>AuthGeek keeps your two-factor codes on your own computer rather than only on a phone.
+Everything lives in one encrypted file on this machine: no account, no server, no sync.
+
+* TOTP and HOTP, SHA1, SHA256 and SHA512, six to ten digits
+* Add by pasting a link, by reading a QR code from a picture, or by typing it in
+* Import everything from Google Authenticator's Transfer accounts QR in one go
+* Show any account back as a QR code to add it to a phone
+* Encrypted backup, plain text export and restore, all built in and tested
+* Argon2id and AES-256-GCM, codes checked against the RFC test vectors on every build
+
+Open source under GPL-3.0. The .NET 8 runtime is bundled, so there is nothing to install first.</description>
+    <summary>Free offline two-factor authenticator for Windows, encrypted and on your own machine</summary>
+    <releaseNotes>https://github.com/techygeekshome/AuthGeek/releases/tag/v1.0.0</releaseNotes>
+    <copyright>Copyright (c) 2026 TechyGeeksHome</copyright>
+    <tags>authgeek 2fa two-factor authenticator totp hotp otp security offline windows foss</tags>
+    <projectSourceUrl>https://github.com/techygeekshome/AuthGeek</projectSourceUrl>
+    <packageSourceUrl>https://github.com/techygeekshome/AuthGeek</packageSourceUrl>
+    <docsUrl>https://techygeekshome.info/authgeek/</docsUrl>
+    <bugTrackerUrl>https://github.com/techygeekshome/AuthGeek/issues</bugTrackerUrl>
+  </metadata>
+</package>
