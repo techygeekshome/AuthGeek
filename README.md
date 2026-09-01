@@ -1,6 +1,23 @@
+<div align="center">
+
+<img src="icons/authgeek-256.png" alt="AuthGeek logo" width="96" height="96">
+
 # AuthGeek
 
-Your two-factor codes, on your own computer.
+**Your two-factor codes on your own computer, in one encrypted file. No account, no server, no sync.**
+
+[![Build](https://github.com/techygeekshome/AuthGeek/actions/workflows/build.yml/badge.svg)](https://github.com/techygeekshome/AuthGeek/actions/workflows/build.yml)
+[![Version](https://img.shields.io/github/v/release/techygeekshome/AuthGeek?label=version&color=4c9bff)](https://github.com/techygeekshome/AuthGeek/releases)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078d4)](#download)
+[![License](https://img.shields.io/badge/License-GPL--3.0-blue)](LICENSE)
+[![Made by TechyGeeksHome](https://img.shields.io/badge/made%20by-TechyGeeksHome-b191f2)](https://techygeekshome.info)
+[![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b)](https://ko-fi.com/techygeekshome)
+
+[Download](#download) · [What it does](#what-it-does) · [Backup and restore](#backup-and-restore) · [Requirements](#requirements)
+
+</div>
+
+---
 
 A two-factor authenticator for the desktop. Add an account by pasting its link, by reading its QR
 code out of a picture, or by transferring the lot across from Google Authenticator in one go.
@@ -9,11 +26,24 @@ uploaded.
 
 Part of the [TechyGeeksHome](https://techygeekshome.info/geek-tools/) range.
 
+---
+
+## Download
+
+**[Download the latest release](https://github.com/techygeekshome/AuthGeek/releases/latest)**, or read about it on the
+**[AuthGeek product page](https://techygeekshome.info/authgeek/)**.
+
+Windows 10 or 11, 64-bit. Nothing else to install.
+
+---
+
 ## Why
 
 Authy withdrew its desktop app, which left a lot of people with their codes only on a phone. One
 lost or broken phone and every account has to be recovered one at a time through whatever proof of
 identity each service happens to accept, and some of them accept none.
+
+---
 
 ## What it does
 
@@ -23,6 +53,8 @@ identity each service happens to accept, and some of them accept none.
 - Show any account as a QR code, so it can be added to a phone
 - Encrypted backup, plain text export, and restore, all built in
 - Locks itself after a few minutes of not being used
+
+---
 
 ## Backup and restore came first
 
@@ -45,6 +77,8 @@ account is skipped rather than duplicated, and an account with the same name but
 secret is kept **as well as** the old one under a slightly different name, because those are two
 different accounts and losing either would be worse than a tidy list.
 
+---
+
 ## What it will not do
 
 - **It does not sync, and it has no account.** There is no server to sign in to and nowhere for
@@ -54,6 +88,8 @@ different accounts and losing either would be worse than a tidy list.
   anyone else.
 - **It does not lock you in.** Every account exports as a standard link or shows as a QR code.
 - **It does not make up its own encryption.** All of it is ordinary, boring and public.
+
+---
 
 ## How it is protected
 
@@ -69,10 +105,14 @@ writes to a temporary file, opens and decrypts it to prove it works, keeps the p
 `.bak`, and only then replaces the real one. Nothing is ever written in place, so a crash halfway
 through cannot leave half a vault.
 
+---
+
 ## Requirements
 
 Windows 10 version 1809 or later, 64-bit. The .NET runtime is bundled, so there is nothing to
 install first.
+
+---
 
 ## Building
 
@@ -81,6 +121,8 @@ dotnet build AuthGeek.sln -c Release
 dotnet run --project tests/AuthGeek.Tests -c Release
 build.cmd installer
 ```
+
+---
 
 ## Licence
 
