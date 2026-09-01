@@ -7,7 +7,7 @@
     <authors>TechyGeeksHome</authors>
     <owners>techygeekshome</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">GPL-3.0-or-later</license>
+    <licenseUrl>https://github.com/techygeekshome/AuthGeek/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://techygeekshome.info/authgeek/</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/techygeekshome/AuthGeek@main/icons/authgeek-256.png</iconUrl>
     <description>AuthGeek keeps your two-factor codes on your own computer rather than only on a phone.
