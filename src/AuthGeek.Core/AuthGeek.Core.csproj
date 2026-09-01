@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AuthGeek.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MIT. Argon2id for turning the master password into a key. The .NET base library has
+         PBKDF2 but no memory-hard function, and for a vault of two-factor secrets that is the
+         difference that matters. -->
+    <PackageReference Include="Konscious.Security.Cryptography.Argon2" Version="1.3.1" />
+
+    <!-- Apache-2.0. Reads a QR code out of a screenshot or a saved image. -->
+    <PackageReference Include="ZXing.Net" Version="0.16.11" />
+  </ItemGroup>
+</Project>
