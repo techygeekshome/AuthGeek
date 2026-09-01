@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AuthGeek.ViewModels"
+             x:Class="AuthGeek.Views.CodesView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16">
+
+      <!-- = nothing here yet -->
+      <Border Classes="drop" IsVisible="{Binding !HasAccounts}" MinHeight="240">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="9">
+          <TextBlock Text="No accounts yet" FontSize="16" FontWeight="SemiBold"
+                     HorizontalAlignment="Center" />
+          <TextBlock Classes="sub" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="480"
+                     TextWrapping="Wrap"
+                     Text="Add one by pasting its otpauth link, by reading its QR code out of a picture, or by transferring the lot across from Google Authenticator in one go." />
+          <Button Classes="toolbtn" Content="Add an account" HorizontalAlignment="Center"
+                  Margin="0,6,0,0" Command="{Binding ShowAdd}" />
+        </StackPanel>
+      </Border>
+
+      <!-- = search found nothing -->
+      <Border Classes="band" IsVisible="{Binding NothingMatches}">
+        <TextBlock Classes="sub" Text="Nothing matches that search." />
+      </Border>
+
+      <!-- = the codes -->
+      <ItemsControl ItemsSource="{Binding Visible}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:AccountViewModel">
+            <Border Classes="card" Margin="0,0,0,10">
+              <Grid ColumnDefinitions="*,Auto" Margin="18,14" RowDefinitions="Auto,Auto,Auto">
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Spacing="2">
+                  <TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="14.5"
+                             TextTrimming="CharacterEllipsis" MaxWidth="380"
+                             HorizontalAlignment="Left" />
+                  <TextBlock Text="{Binding Subtitle}" Classes="sub" FontSize="12"
+                             IsVisible="{Binding HasSubtitle}"
+                             TextTrimming="CharacterEllipsis" MaxWidth="380"
+                             HorizontalAlignment="Left" />
+                </StackPanel>
+
+                <!-- the code itself, big, because it is the only reason the app exists -->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Code}"
+                           FontSize="34" FontWeight="SemiBold" Margin="0,8,0,0"
+                           FontFamily="Consolas, Cascadia Mono, monospace"
+                           IsVisible="{Binding HasCode}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Problem}"
+                           Classes="sub" Margin="0,8,0,0" TextWrapping="Wrap" MaxWidth="420"
+                           Foreground="{StaticResource Amber}" HorizontalAlignment="Left"
+                           IsVisible="{Binding HasProblem}" />
+
+                <!-- the countdown, as a bar that empties -->
+                <Grid Grid.Row="2" Grid.Column="0" ColumnDefinitions="220,Auto"
+                      Margin="0,10,0,0" IsVisible="{Binding IsTimeBased}">
+                  <ProgressBar Grid.Column="0" Height="4" Minimum="0" Maximum="100"
+                               Value="{Binding Remaining}"
+                               Foreground="{Binding CountdownBrush}"
+                               VerticalAlignment="Center" />
+                  <TextBlock Grid.Column="1" Text="{Binding CountdownText}" Classes="meta"
+                             Margin="10,0,0,0" VerticalAlignment="Center"
+                             Foreground="{Binding CountdownBrush}" MinWidth="34" />
+                </Grid>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CountdownText}"
+                           Classes="meta" Margin="0,10,0,0"
+                           IsVisible="{Binding IsCounterBased}" />
+
+                <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="1"
+                            Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <Button Classes="toolbtn" Content="Copy" Click="OnCopy"
+                          IsVisible="{Binding HasCode}" />
+                  <Button Classes="ghost" Content="Next code" Command="{Binding NextCode}"
+                          IsVisible="{Binding IsCounterBased}" />
+                  <Button Classes="ghost" Content="Show QR" Click="OnShowQr" />
+                  <Button Classes="ghost" Content="Remove" Click="OnRemove" />
+                </StackPanel>
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

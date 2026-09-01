@@ -1,0 +1,124 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AuthGeek.ViewModels"
+        xmlns:views="clr-namespace:AuthGeek.Views"
+        x:Class="AuthGeek.Views.MainWindow"
+        x:DataType="vm:ShellViewModel"
+        Title="AuthGeek"
+        Width="1000" Height="820" MinWidth="780" MinHeight="520"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Navy}"
+        FontFamily="{StaticResource UiFont}"
+        FontSize="13.5">
+
+  <!-- Window scope, not app scope: Application.Styles is built before Application.Resources,
+       so a StaticResource lookup at app level cannot see the palette. -->
+  <Window.Styles>
+    <StyleInclude Source="avares://AuthGeek/Themes/Shell.axaml" />
+  </Window.Styles>
+
+  <Panel>
+
+    <!-- ======================================================== unlocked -->
+    <Grid ColumnDefinitions="212,*" IsVisible="{Binding IsUnlocked}">
+
+      <Border Grid.Column="0" Background="{StaticResource Chrome}"
+              BorderBrush="{StaticResource Line}" BorderThickness="0,0,1,0">
+        <Grid RowDefinitions="Auto,*,Auto" Margin="12,16">
+
+          <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4,0,0,18">
+            <Image Source="avares://AuthGeek/Assets/authgeek.png"
+                   Width="34" Height="34" VerticalAlignment="Center" />
+            <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+              <TextBlock Text="{Binding BrandName}" FontSize="15.5" FontWeight="Bold" />
+              <TextBlock Text="{Binding BrandBy}" FontSize="11"
+                         Foreground="{StaticResource Txt3}" Margin="0,1,0,0" />
+            </StackPanel>
+          </StackPanel>
+
+          <StackPanel Grid.Row="1" Spacing="2">
+            <Button Classes="nav" Classes.on="{Binding IsCodes}"
+                    Command="{Binding ShowCodes}" Content="Codes" />
+            <Button Classes="nav" Classes.on="{Binding IsAdd}"
+                    Command="{Binding ShowAdd}" Content="Add an account" />
+            <Button Classes="nav" Classes.on="{Binding IsBackup}"
+                    Command="{Binding ShowBackup}" Content="Backup" />
+            <Button Classes="nav" Classes.on="{Binding IsSettings}"
+                    Command="{Binding ShowSettings}" Content="Settings" />
+          </StackPanel>
+
+          <StackPanel Grid.Row="2" Spacing="7">
+            <Button Classes="toolbtn" Content="Lock now" Command="{Binding Lock}"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <Button Classes="ghost" Content="Check for updates" Click="OnCheckUpdates" />
+            <Button Classes="ghost" Content="About" Click="OnAbout" />
+            <TextBlock Text="{Binding VersionText, StringFormat='v{0}'}"
+                       FontSize="11" Foreground="{StaticResource Txt4}"
+                       HorizontalAlignment="Center" Margin="0,4,0,0" />
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Grid Grid.Column="1" RowDefinitions="Auto,*">
+
+        <Border Grid.Row="0" Padding="26,26,26,15"
+                BorderBrush="{StaticResource LineSoft}" BorderThickness="0,0,0,1">
+          <Grid ColumnDefinitions="*,Auto">
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+              <TextBlock Text="{Binding PageTitle}" FontSize="21" FontWeight="SemiBold" />
+              <TextBlock Text="{Binding StatusLine}" Classes="sub"
+                         FontSize="12.5" Margin="0,4,0,0" MaxWidth="560"
+                         HorizontalAlignment="Left" TextWrapping="Wrap" />
+            </StackPanel>
+
+            <TextBox Grid.Column="1" Watermark="Search" Width="200"
+                     Text="{Binding Search}" VerticalAlignment="Center"
+                     IsVisible="{Binding IsCodes}" />
+          </Grid>
+        </Border>
+
+        <Panel Grid.Row="1">
+          <views:CodesView IsVisible="{Binding IsCodes}" />
+          <views:AddView IsVisible="{Binding IsAdd}" />
+          <views:BackupView IsVisible="{Binding IsBackup}" />
+          <views:SettingsView IsVisible="{Binding IsSettings}" />
+        </Panel>
+      </Grid>
+    </Grid>
+
+    <!-- ========================================================== locked -->
+    <Border IsVisible="{Binding IsLocked}" Background="{StaticResource Navy}">
+      <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                  Width="420" Spacing="14">
+
+        <Image Source="avares://AuthGeek/Assets/authgeek.png"
+               Width="64" Height="64" HorizontalAlignment="Center" />
+
+        <TextBlock Text="AuthGeek" FontSize="22" FontWeight="Bold"
+                   HorizontalAlignment="Center" />
+
+        <TextBlock Classes="sub" HorizontalAlignment="Center" TextAlignment="Center"
+                   TextWrapping="Wrap" Name="LockedBlurb" />
+
+        <TextBox Name="PasswordBox" PasswordChar="•" Watermark="Master password"
+                 Margin="0,6,0,0" KeyDown="OnPasswordKey" />
+
+        <TextBox Name="ConfirmBox" PasswordChar="•" Watermark="Type it again"
+                 IsVisible="False" KeyDown="OnPasswordKey" />
+
+        <TextBlock Text="{Binding UnlockMessage}" TextWrapping="Wrap"
+                   Foreground="{StaticResource Amber}" FontSize="12.5"
+                   IsVisible="{Binding UnlockMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+        <Button Name="UnlockButton" Classes="primary" Content="Unlock"
+                HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                Click="OnUnlock" />
+
+        <TextBlock Classes="meta" HorizontalAlignment="Center" TextAlignment="Center"
+                   TextWrapping="Wrap" Margin="0,8,0,0"
+                   Text="There is no way to reset this password and no way around it. That is the point of it, and it is also why the Backup screen exists." />
+      </StackPanel>
+    </Border>
+
+  </Panel>
+</Window>

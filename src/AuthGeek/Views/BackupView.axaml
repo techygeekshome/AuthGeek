@@ -1,0 +1,98 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AuthGeek.ViewModels"
+             x:Class="AuthGeek.Views.BackupView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16" MaxWidth="820" HorizontalAlignment="Left">
+
+      <Border Classes="band">
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <Border Width="4" CornerRadius="2" Background="{StaticResource Amber}" />
+          <StackPanel Spacing="5" MaxWidth="720">
+            <TextBlock Text="Why this screen exists" FontWeight="SemiBold" FontSize="13.5" />
+            <TextBlock Classes="sub" TextWrapping="Wrap"
+                       Text="A two-factor secret cannot be recovered from anywhere. If this computer dies and there is no backup, every account is recovered one at a time through whatever proof of identity each service happens to accept, and some of them accept none. Make a backup now, put it somewhere that is not this computer, and you never have to think about it again." />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="Encrypted backup" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Text="The one to make" />
+            </Grid>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="10">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Writes every account to a file, encrypted with a password you choose. It is the same format as the vault itself, so restoring it needs nothing but AuthGeek and the password. Safe to put on a USB stick or in cloud storage: without the password it is noise." />
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Classes="primary" Content="Write a backup…" Click="OnWriteEncrypted" />
+                <Button Classes="toolbtn" Content="Restore from a backup…" Click="OnRestore" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="5">
+              <TextBlock Text="Restoring never replaces anything" FontWeight="SemiBold" FontSize="12.5" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Accounts from a backup are added to what is already here. An account that is already present, with the same secret, is skipped rather than duplicated. An account with the same name but a different secret is kept as well as the old one, under a slightly different name, because those are two different accounts and losing either would be worse than a tidy list." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="Plain text export" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Foreground="{StaticResource Amber}" Text="Readable secrets" />
+            </Grid>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="10">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="One otpauth link per line, which every other authenticator can read. This is how you leave AuthGeek for something else, and it is offered on purpose: an app you cannot get out of is worse than one you can." />
+              <TextBlock Classes="sub" TextWrapping="Wrap" Foreground="{StaticResource Amber}"
+                         Text="It is not encrypted. Anyone who opens the file can generate your codes. Keep it off cloud storage and email, and delete it when you have finished with it." />
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Classes="toolbtn" Content="Export as plain text…" Click="OnWriteText" />
+                <Button Classes="ghost" Content="Import a text export…" Click="OnImportText" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Where the vault is" FontWeight="SemiBold" />
+          </Border>
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="4">
+              <TextBlock Text="{Binding VaultPath}" Classes="mono" TextWrapping="Wrap" />
+              <TextBlock Classes="sub" Margin="0,2,0,0" TextWrapping="Wrap"
+                         Text="Copying this file somewhere safe is a backup too, and it needs your master password rather than a separate one. A .bak file sits next to it: that is the version before the last save, kept in case a save ever goes wrong." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="band" IsVisible="{Binding #Outcome.IsVisible}">
+        <TextBlock Name="Outcome" Classes="sub" TextWrapping="Wrap" IsVisible="False" />
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

@@ -1,0 +1,110 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AuthGeek.ViewModels"
+             x:Class="AuthGeek.Views.SettingsView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16" MaxWidth="820" HorizontalAlignment="Left">
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Locking" FontWeight="SemiBold" />
+          </Border>
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="8">
+              <TextBlock Text="Lock itself when it has not been used" FontWeight="SemiBold" FontSize="12.5" />
+              <ComboBox ItemsSource="{Binding LockOptions}" SelectedItem="{Binding SelectedLockOption}"
+                        MinWidth="240" HorizontalAlignment="Left" />
+              <TextBlock Text="{Binding AutoLockText}" Classes="sub" TextWrapping="Wrap" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Master password" FontWeight="SemiBold" />
+          </Border>
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="10">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Changing it rewrites the vault with the new password. The .bak file next to it is the version from before the change and still needs the old one, so keep the old password until you are sure." />
+              <Button Classes="toolbtn" Content="Change the master password…" Click="OnChangePassword"
+                      HorizontalAlignment="Left" />
+              <TextBlock Name="PasswordOutcome" Classes="sub" TextWrapping="Wrap" IsVisible="False" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <!-- Every app in the range says what it will not do, on screen, in the app -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="What AuthGeek will not do" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not sync, and it has no account" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="There is no server to sign in to, nothing to subscribe to and nowhere for your secrets to go. They are in one encrypted file on this computer. Getting them onto another device is your decision and there is a Backup screen for it, rather than something that happens quietly in the background." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It cannot reset your master password" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Not a policy, a fact: the password is what the encryption key is made from, and without it there is no key. There is no recovery question, no email link and no back door, for you or for anyone else. That is why the Backup screen exists and why it says what it says." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not lock you in" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Every account can be exported as a standard otpauth link that any other authenticator reads, or shown as a QR code for a phone. An app you cannot leave is worse than one you can, so leaving is a button rather than a project." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It does not make up its own encryption" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Argon2id turns the password into a key, AES-256-GCM encrypts the accounts, and the codes are made to RFC 4226 and RFC 6238 and checked against the test vectors published in those documents. All of it is ordinary, boring and public, which is what you want here." />
+            </StackPanel>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="3">
+              <TextBlock Text="It is free, including at work" FontWeight="SemiBold" />
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="No paid tier, no trial, no account limit. GPL-3.0, source on GitHub, which for a program that holds your two-factor secrets is the least it could offer." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Where things are" FontWeight="SemiBold" />
+          </Border>
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="4">
+              <TextBlock Text="Vault" FontWeight="SemiBold" />
+              <TextBlock Text="{Binding VaultPath}" Classes="mono" TextWrapping="Wrap" />
+              <TextBlock Classes="sub" Margin="0,2,0,0" TextWrapping="Wrap"
+                         Text="Under your own profile. Nothing is written anywhere else, nothing goes in the registry, and uninstalling AuthGeek leaves this file alone." />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

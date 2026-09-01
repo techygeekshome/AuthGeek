@@ -1,0 +1,98 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AuthGeek.ViewModels"
+             x:Class="AuthGeek.Views.AddView"
+             x:DataType="vm:ShellViewModel">
+
+  <ScrollViewer>
+    <StackPanel Margin="26,20" Spacing="16" MaxWidth="820" HorizontalAlignment="Left">
+
+      <!-- = paste a link -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Grid.Column="0" Text="Paste a link" FontWeight="SemiBold" />
+              <TextBlock Grid.Column="1" Classes="meta" VerticalAlignment="Center"
+                         Text="The usual way" />
+            </Grid>
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="10">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Most sites offer a link as well as a QR code, usually behind a &quot;can't scan it?&quot; or &quot;enter manually&quot; option. Paste it here. A Google Authenticator transfer link works too, and brings every account in it across at once. One per line if you have several." />
+
+              <TextBox Name="LinkBox" AcceptsReturn="True" Height="110"
+                       Watermark="otpauth://totp/..." TextWrapping="Wrap"
+                       FontFamily="Consolas, Cascadia Mono, monospace" FontSize="12" />
+
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Classes="primary" Content="Add" Click="OnAddLink" />
+                <Button Classes="ghost" Content="Clear" Click="OnClearLink" />
+              </StackPanel>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <!-- = read a QR out of a picture -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Read a QR code from a picture" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="10">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="Take a screenshot of the QR code on the setup page and save it, or use a photograph of one, and choose it here. Nothing is uploaded: the picture is read on this machine and not kept." />
+
+              <Button Classes="toolbtn" Content="Choose a picture…" Click="OnChooseImage"
+                      HorizontalAlignment="Left" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <!-- = type it in -->
+      <Border Classes="card">
+        <StackPanel>
+          <Border Classes="cardhead">
+            <TextBlock Text="Type it in" FontWeight="SemiBold" />
+          </Border>
+
+          <Border Classes="row" BorderThickness="0">
+            <StackPanel Spacing="12">
+              <TextBlock Classes="sub" TextWrapping="Wrap"
+                         Text="For a site that only shows you a string of letters. Spaces and capitals do not matter." />
+
+              <Grid ColumnDefinitions="*,14,*" RowDefinitions="Auto,Auto">
+                <StackPanel Grid.Row="0" Grid.Column="0" Spacing="5">
+                  <TextBlock Text="Service" FontSize="12" Foreground="{StaticResource Txt2}" />
+                  <TextBox Name="IssuerBox" Watermark="GitHub" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2" Spacing="5">
+                  <TextBlock Text="Account" FontSize="12" Foreground="{StaticResource Txt2}" />
+                  <TextBox Name="LabelBox" Watermark="you@example.com" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Spacing="5" Margin="0,12,0,0">
+                  <TextBlock Text="Secret" FontSize="12" Foreground="{StaticResource Txt2}" />
+                  <TextBox Name="SecretBox" Watermark="JBSW Y3DP EHPK 3PXP"
+                           FontFamily="Consolas, Cascadia Mono, monospace" />
+                </StackPanel>
+              </Grid>
+
+              <Button Classes="primary" Content="Add" Click="OnAddTyped" HorizontalAlignment="Left" />
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Border>
+
+      <Border Classes="band" IsVisible="{Binding #Outcome.IsVisible}">
+        <TextBlock Name="Outcome" Classes="sub" TextWrapping="Wrap" IsVisible="False" />
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>
