@@ -54,6 +54,25 @@ identity each service happens to accept, and some of them accept none.
 - Encrypted backup, plain text export, and restore, all built in
 - Locks itself after a few minutes of not being used
 
+
+## Screenshots
+
+**Codes** — every account you have added, with the code and how long it has left.
+
+<img src="docs/screenshots/02-codes.png" alt="The Codes screen" width="820">
+
+**Add an account** — paste a link, read a QR code from a picture, or type the secret in.
+
+<img src="docs/screenshots/03-add-account.png" alt="The Add an account screen" width="820">
+
+**Backup** — an encrypted backup, or a plain text export if you know what you are doing.
+
+<img src="docs/screenshots/05-backup.png" alt="The Backup screen" width="820">
+
+**Settings** — the idle lock, the master password, and a plain list of what AuthGeek will not do.
+
+<img src="docs/screenshots/06-settings.png" alt="The Settings screen" width="820">
+
 ---
 
 ## Backup and restore came first
