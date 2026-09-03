@@ -19,6 +19,14 @@
 
 ---
 
+## 🎬 See it in action
+
+[![AuthGeek demo video](https://img.youtube.com/vi/HtrjpdrUe-g/maxresdefault.jpg)](https://www.youtube.com/watch?v=HtrjpdrUe-g)
+
+Setting up the vault and adding an account, in under a minute.
+
+---
+
 A two-factor authenticator for the desktop. Add an account by pasting its link, by reading its QR
 code out of a picture, or by transferring the lot across from Google Authenticator in one go.
 Everything lives in one encrypted file on this machine: no account, no server, no sync, nothing
